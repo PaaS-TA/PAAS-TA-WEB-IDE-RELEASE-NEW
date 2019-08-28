@@ -1,0 +1,6 @@
+---
+name: eclipse-che
+dependencies: 
+- java
+files:
+- eclipse-che/eclipse-che.tar.gz

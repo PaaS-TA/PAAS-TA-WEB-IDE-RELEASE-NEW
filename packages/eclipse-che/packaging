@@ -1,0 +1,8 @@
+# abort script on any command that exits with a non zero value
+set -e
+
+archive="eclipse-che/eclipse-che.tar.gz"
+
+tar -xvf $archive
+
+cp *.tar ${BOSH_INSTALL_TARGET}/.

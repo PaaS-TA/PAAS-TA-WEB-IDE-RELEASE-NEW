@@ -1,0 +1,8 @@
+set -e
+
+archive="docker/docker.tar.gz"
+
+
+tar -xvf $archive
+
+cp docker/*.deb ${BOSH_INSTALL_TARGET}/.

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e pipefail
+
+
+DATA_DIR=/var/vcap/data/workspace
+mkdir $DATA_DIR
+
+JOB_DIR=/var/vcap/jobs/eclipse-che
+bash $JOB_DIR/helpers/install_deb.sh
+
+sleep 5
+
+docker load < /var/vcap/packages/eclipse-che/alpine.tar
+docker load < /var/vcap/packages/eclipse-che/che-action.tar
+docker load < /var/vcap/packages/eclipse-che/che-dir.tar
+docker load < /var/vcap/packages/eclipse-che/che-init.tar
+docker load < /var/vcap/packages/eclipse-che/che-ip.tar
+docker load < /var/vcap/packages/eclipse-che/che-mount.tar
+docker load < /var/vcap/packages/eclipse-che/che-server.tar
+docker load < /var/vcap/packages/eclipse-che/che-test.tar
+docker load < /var/vcap/packages/eclipse-che/che.tar
+docker load < /var/vcap/packages/eclipse-che/docker-compose.tar
+
+sleep 5

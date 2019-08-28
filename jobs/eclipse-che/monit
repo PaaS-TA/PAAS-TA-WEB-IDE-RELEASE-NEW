@@ -1,0 +1,5 @@
+check process eclipse-che
+  with pidfile /var/vcap/sys/run/eclipse-che/eclipse-che.pid
+  start program "/var/vcap/jobs/eclipse-che/bin/monit_debugger che_ctl '/var/vcap/jobs/eclipse-che/bin/che_ctl start'"
+  stop program "/var/vcap/jobs/eclipse-che/bin/monit_debugger che_ctl '/var/vcap/jobs/eclipse-che/bin/che_ctl stop'"
+  group vcap

@@ -1,0 +1,21 @@
+---
+name: eclipse-che
+
+templates:
+  bin/che_ctl.erb: bin/che_ctl
+  bin/monit_debugger: bin/monit_debugger
+  bin/install.sh.erb: bin/pre-start
+  helpers/install_deb.sh.erb: helpers/install_deb.sh
+  helpers/ctl_setup.sh: helpers/ctl_setup.sh
+  helpers/ctl_utils.sh: helpers/ctl_utils.sh
+  data/properties.sh: data/properties.sh
+
+provides:
+  - {name: eclipse-che-link, type: eclipse-che}
+
+packages:
+  - java
+  - docker
+  - eclipse-che
+
+

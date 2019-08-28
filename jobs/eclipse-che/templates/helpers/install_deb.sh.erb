@@ -1,0 +1,9 @@
+#!/bin/bash
+
+package=$1
+package_path='/var/vcap/packages'
+
+cd $package_path/docker
+
+sudo dpkg -i *
+
