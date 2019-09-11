@@ -8,7 +8,7 @@ PKG_DIR="/var/vcap/packages/${JOB_NAME}"
 PIDFILE="/var/vcap/sys/run/${JOB_NAME}/${JOB_NAME}.pid"
 
 export JOB_NAME
-source /var/vcap/jobs/${JOB_NAME}/helpers/ctl_setup.sh $JOB_NAME
+#source /var/vcap/jobs/${JOB_NAME}/helpers/ctl_setup.sh $JOB_NAME
 
 export JOB_DIR
 export PKG_DIR
@@ -17,7 +17,7 @@ case $1 in
 
 start)
   echo "starting :: ${JOB_NAME}"
-  pid_guard $PIDFILE $JOB_NAME
+  #pid_guard $PIDFILE $JOB_NAME
 
 
   echo "starting 1 :: PIDFILE :: $PIDFILE"
@@ -31,16 +31,18 @@ start)
   >>$LOG_DIR/$JOB_NAME.stdout.log \
   2>>$LOG_DIR/$JOB_NAME.stderr.log &
 
-  echo $! > $PIDFILE
+
+  pid_process=$(docker inspect -f '{{ .State.Pid }}' che)
+
+  echo $pid_process > $PIDFILE
 
   echo "starting 6 :: PIDFILE :: $PIDFILE"
 
   echo "SUCCESS :: starting :: ${JOB_NAME}"
 ;;
 stop)
-
-  kill_and_wait $PIDFILE
   docker kill $(docker ps -q -f status=running)
+  rm -r $PIDFILE
 ;;
 
 *)

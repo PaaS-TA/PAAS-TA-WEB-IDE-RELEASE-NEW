@@ -19,21 +19,21 @@ update:
   serial: false
 
 
-jobs:
+instance_groups:
 - name: eclipse-che  #작업 이름(필수)
   azs:
-    - z6
-  instances: 1
+    - z7
+  instances: "((eclipse_che_instances))"
   vm_type: "((web_ide_vm_type))"
   stemcell: "((stemcell_alias))"
-  templates:
-    - name: eclipse-che
-      release: "((releases_name))"
   networks:
-  - name: ((internal_networks_name))   # Networks block에서 선언한 network 이름(필수)
+  - name: ((internal_networks_name))
   - name: ((external_networks_name))
-    default: [dns, gateway]
-    static_ips: ((paasta_webide_public_ip))
+    static_ips: ((eclipse_che_public_ip))
+  jobs:
+  - name: eclipse-che
+    release: "((releases_name))"
+
 
 - name: mariadb
   azs:
@@ -43,10 +43,10 @@ jobs:
   stemcell: "((stemcell_alias))"
   persistent_disk_type: "((mariadb_disk_type))"
   networks:
-    - name: ((internal_networks_name))
-  templates:
-    - name: mariadb
-      release: "((releases_name))"
+  - name: ((internal_networks_name))
+  jobs:
+  - name: mariadb
+    release: "((releases_name))"
   syslog_aggregator: null
   properties:
     mariadb:                                                # MARIA DB SERVER 설정 정보
@@ -66,19 +66,16 @@ jobs:
   vm_type: medium
   stemcell: "((stemcell_alias))"
   networks:
-    - name: ((internal_networks_name))
-  templates:
-    - name: web-ide-broker
-      release: "((releases_name))"
+  - name: ((internal_networks_name))
+  jobs:
+  - name: web-ide-broker
+    release: "((releases_name))"
   syslog_aggregator: null
   properties:
     server:
       port: ((server_port))
     datasource:
       password: "((mariadb_user_password))"
-    webide:
-      servers:
-        - 115.68.46.189:8080
     serviceDefinition:
       id: ((serviceDefinition_id))
       plan1:

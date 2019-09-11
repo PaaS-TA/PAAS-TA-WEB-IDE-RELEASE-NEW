@@ -1,0 +1,7 @@
+---
+
+- type: replace
+  path: /instance_groups/name=eclipse-che/networks/name=((external_networks_name))
+  value:
+    name: default
+    default: [dns, gateway]
