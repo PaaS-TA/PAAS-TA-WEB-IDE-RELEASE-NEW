@@ -3,7 +3,7 @@
 # vsphere 인 경우 에는 use-public-network-vsphere.yml 사용하여 public ip를 설정 하고 그 이외의 IaaS는 use-public-network.yml 사용한다.
 
 bosh -d paasta-web-ide deploy paasta_web_ide.yml \
-   -o use-public-network-openstack.yml \
+   -o use-public-network-gcp.yml \
    -v releases_name="paas-ta-webide-release" \
    -v stemcell_os="ubuntu-xenial" \
    -v stemcell_version="315.36" \
