@@ -1,7 +1,7 @@
 # PAAS-TA-WEB-IDE-RELEASE-NEW
 
 본 릴리즈는 파스타 4.6을 지원하기위하여, 새롭게 구성된 PAAS-TA-WEB-IDE-RELEASE이다.
-Stemcell ubuntu-xenial 버전 315.45에 최적화 되어 있다.
+Stemcell ubuntu-xenial 버전 315.36에 최적화 되어 있다.
 Stemcell ubuntu-trusty 는 지원하지 않는다.
 src
 ---
@@ -28,6 +28,6 @@ src <br>
 $ cd ~/
 $ git clone https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-RELEASE.git
 $ cd ~/PAAS-TA-PORTAL-RELEASE
-$ wget -O src.zip 수정 예정
+$ wget -O src.zip http://45.248.73.44/index.php/s/DoQgkoeZRQDX9sY/download
 $ unzip src.zip
 ```
