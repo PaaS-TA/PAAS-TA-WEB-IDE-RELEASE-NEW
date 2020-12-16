@@ -28,8 +28,8 @@ instance_groups:
   stemcell: "((stemcell_alias))"
   networks:
   - name: ((internal_networks_name))
-  - name: ((external_networks_name))
-    static_ips: ((eclipse_che_public_ip))
+#  - name: ((external_networks_name))
+#    static_ips: ((eclipse_che_public_ip))
   jobs:
   - name: eclipse-che
     release: "((releases_name))"
@@ -37,7 +37,7 @@ instance_groups:
 
 - name: mariadb
   azs:
-    - z3
+    - z4
   instances: 1
   vm_type: small
   stemcell: "((stemcell_alias))"
@@ -61,7 +61,7 @@ instance_groups:
 
 - name: webide-broker
   azs:
-    - z3
+    - z4
   instances: 1
   vm_type: medium
   stemcell: "((stemcell_alias))"
@@ -72,12 +72,35 @@ instance_groups:
     release: "((releases_name))"
   syslog_aggregator: null
   properties:
+    network:
+      static_ips: "((eclipse_che_buffer_ip))"
     server:
       port: ((server_port))
     datasource:
       password: "((mariadb_user_password))"
     serviceDefinition:
-      id: ((serviceDefinition_id))
+      id: "((serviceDefinition_id))"
+      name: "((serviceDefinition_name))"
+      bullet:
+        name: "((serviceDefinition_bullet_name))"
+        desc: "((serviceDefinition_bullet_desc))"
       plan1:
-        id: ((serviceDefinition_plan1_id))
+        id: "((serviceDefinition_plan1_id))"
+        name: "((serviceDefinition_plan1_name))"
+        desc: "((serviceDefinition_plan1_desc))"
+      org_limitation: "((serviceDefinition_org_limitation))"
+      space_limitation: "((serviceDefinition_space_limitation))"
+    bosh:
+      client_id: "((bosh_client_admin_id))"
+      client_secret: "((bosh_client_admin_secret))"
+      url: ((bosh_url)):((bosh_director_port))
+      oauth_url: ((bosh_url)):((bosh_oauth_port))
+      deployment_name: "((deployment_name))"
+      instance_name: "((on_demand_service_instance_name))"
+    cloudfoundry:
+      url: "((cloudfoundry_url))"
+      sslSkipValidation: "((cloudfoundry_sslSkipValidation))"
+      admin:
+        id: "((cloudfoundry_admin_id))"
+        password: "((cloudfoundry_admin_password))"
 
