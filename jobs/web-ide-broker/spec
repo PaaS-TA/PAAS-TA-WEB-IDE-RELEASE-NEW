@@ -14,7 +14,7 @@ packages:
   - web-ide-broker
 
 provides:
-  - {name: web-ide-broker-link, type: web-ide-broker, properties: [server.port, datasource.drive_class_name, datasource.url, datasource.password, logging.level.root.org.openpaas.servicebroker.controller, webide.servers, serviceDefinition.id, serviceDefinition.id, serviceDefinition.plan1.id]}
+  - {name: web-ide-broker-link, type: web-ide-broker, properties: [server.port, datasource.drive_class_name, datasource.url, datasource.password, logging.level.root.org.openpaas.servicebroker.controller, webide.servers, serviceDefinition.id, serviceDefinition.name, serviceDefinition.bullet.name, serviceDefinition.bullet.desc, serviceDefinition.plan1.id, serviceDefinition.plan1.name, serviceDefinition.plan1.desc, serviceDefinition.org_limitation, serviceDefinition.space_limitation, bosh.client_id, bosh.client_secret, bosh.url, bosh.oauth_url, bosh.deployment_name, bosh.instance_name, cloudfoundry.url, cloudfoundry.sslSkipValidation, cloudfoundry.admin.id, cloudfoundry.admin.password, network.static_ips]}
 
 consumes:
   - name: mariadb-link
@@ -44,6 +44,42 @@ properties:
   serviceDefinition.id:
     description: 'service broker id'
     default: 'af86588c-6212-11e7-907b-b6006ad3webide0'
+  serviceDefinition.name:
+    description: 'On-Demand Service Instance Name'
+  serviceDefinition.bullet.name:
+    description: 'On-Demand Service Instance Bullet Name'
+  serviceDefinition.bullet.desc:
+    description: 'On-Demand Service Instance Bullet Desc'
   serviceDefinition.plan1.id:
     description: 'service broker plan1 id'
     default: 'af86588c-6212-11e7-907b-b6006ad3webide1'
+  serviceDefinition.plan1.name:
+    description: 'On-Demand Broker Service Instance Plan Name.'
+  serviceDefinition.plan1.desc:
+    description: 'On-Demand Broker Service Instance Plan Description'
+  serviceDefinition.org_limitation:
+    description: 'The number of service limitations in the organization -1 is unlimited'
+  serviceDefinition.space_limitation:
+    description: 'The number of service limitations in the space -1 is unlimited'
+  bosh.client_id:
+    description: 'Bosh Client Admin ID'
+  bosh.client_secret:
+    description: 'Bosh Client Admin Secret'
+  bosh.url:
+    description: 'Bosh Api Url'
+  bosh.oauth_url:
+    description: 'Bosh Oauth Url'
+  bosh.deployment_name:
+    description: 'Bosh On-Demand Broker Deployment Name'
+  bosh.instance_name:
+    description: 'Bosh On-Demand Broker Service Instance VM Name'
+  cloudfoundry.url:
+    description: 'CloudFoundry URL'
+  cloudfoundry.sslSkipValidation:
+    description: 'CloudFoundry Login SSL Validation'
+  cloudfoundry.admin.id:
+    description: 'CloudFoundry Admin ID'
+  cloudfoundry.admin.password:
+    description: 'CloudFoundry Admin Password'
+  network.static_ips:
+    description: 'Public IPs used by eclipse-che'

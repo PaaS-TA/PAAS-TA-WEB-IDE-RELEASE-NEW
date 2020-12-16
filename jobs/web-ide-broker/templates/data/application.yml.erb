@@ -25,8 +25,8 @@ logging:
 
 webide:
   servers:
-  <% link('eclipse-che-link').instances.each_with_index do | ip, index| %>
-   - 'http://<%= link('eclipse-che-link').instances[index].address%>:8080'
+  <% p('network.static_ips').each do | ip | %>
+   - 'http://<%= ip %>:8080'
   <% end %>
 serviceDefinition:
   id: <%= p('serviceDefinition.id')%>
@@ -34,9 +34,32 @@ serviceDefinition:
   desc: "A paasta web ide service for application development.provision parameters"
   bindable: false
   planupdatable: false
+  bullet:
+    name: <%= p('serviceDefinition.bullet.name')%>
+    desc: <%= p('serviceDefinition.bullet.desc')%>
   plan1:
     id: <%= p('serviceDefinition.plan1.id')%>
-    name: webide-shared
-    desc: "This is service plan. All services are created equally."
+    name: <%= p('serviceDefinition.plan1.name')%>
+    desc: <%= p('serviceDefinition.plan1.desc')%>
     type: A
+  org_limitation: <%= p('serviceDefinition.org_limitation')%>
+  space_limitation: <%= p('serviceDefinition.space_limitation')%>
 
+bosh:
+  client_id: <%= p('bosh.client_id')%>
+  client_secret: <%= p('bosh.client_secret')%>
+  url: <%= p('bosh.url')%>
+  oauth_url: <%= p('bosh.oauth_url')%>
+  deployment_name: <%= p('bosh.deployment_name')%>
+  instance_name: <%= p('bosh.instance_name')%>
+
+cloudfoundry:
+  cc:
+    api:
+      url: https://api.<%= p('cloudfoundry.url')%>
+      uaaUrl: https://uaa.<%= p('cloudfoundry.url')%>
+      sslSkipValidation: <%= p('cloudfoundry.sslSkipValidation')%>
+  user:
+    admin:
+      username: <%= p('cloudfoundry.admin.id')%>
+      password: <%= p('cloudfoundry.admin.password')%>
