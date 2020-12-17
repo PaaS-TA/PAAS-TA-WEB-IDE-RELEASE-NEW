@@ -7,3 +7,10 @@ cd $package_path/docker
 
 sudo dpkg -i *
 
+sudo service docker stop
+sudo cp -r /var/lib/docker /var/vcap/data
+
+sudo find /lib/systemd/system -name "docker.service" -type f | sudo xargs sed -i -e 's/ExecStart=\/usr\/bin\/dockerd -H fd:\/\/ --containerd=\/run\/containerd\/containerd.sock/ExecStart=\/usr\/bin\/dockerd -H fd:\/\/ --containerd=\/run\/containerd\/containerd.sock --data-root=\/var\/vcap\/data\/docker/g'
+
+sudo systemctl daemon-reload
+sudo service docker start
