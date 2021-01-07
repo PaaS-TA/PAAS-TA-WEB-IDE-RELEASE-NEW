@@ -1,10 +1,7 @@
 # PAAS-TA-WEB-IDE-RELEASE-NEW
 
-본 릴리즈는 OnDemand를 지원하는 새롭게 구성된 PAAS-TA-WEB-IDE-RELEASE이다.
-Stemcell ubuntu-trusty 는 지원하지 않는다.
-src
 ---
-
+본 릴리즈는 OnDemand를 지원하는 새롭게 구성된 PAAS-TA-WEB-IDE-RELEASE이다.
 src 폴더에 각 package의 설치파일이 위치해야 한다.
 
 src <br>
@@ -21,7 +18,7 @@ src <br>
 └── README.md <br>
 
 
-***BOSH 특정버전 이상에서 지원 안됨 ***
+***현재 BOSH 특정버전 이상에서 지원 안됨 ***
 
 ```
 $ cd ~/
