@@ -1,7 +1,6 @@
 # PAAS-TA-WEB-IDE-RELEASE-NEW
 
-본 릴리즈는 PaaS-TA 4.6을 지원하기위하여, 새롭게 구성된 PAAS-TA-WEB-IDE-RELEASE이다.
-Stemcell ubuntu-xenial 버전 315.36에 최적화 되어 있다.
+본 릴리즈는 OnDemand를 지원하는 새롭게 구성된 PAAS-TA-WEB-IDE-RELEASE이다.
 Stemcell ubuntu-trusty 는 지원하지 않는다.
 src
 ---
@@ -18,16 +17,16 @@ src <br>
 ├── java <br>
 │     └── jre-8u77-linux-x64.tar.gz <br>
 ├── web-ide-broker <br>
-│     └── pweb-ide-broker.jar <br>
+│     └── web-ide-broker.jar <br>
 └── README.md <br>
 
 
-***PaaS-TA 4.6 공개시 사용 가능***
+***BOSH 특정버전 이상에서 지원 안됨 ***
 
 ```
 $ cd ~/
-$ git clone https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-RELEASE.git
-$ cd ~/PAAS-TA-PORTAL-RELEASE
-$ wget -O src.zip http://45.248.73.44/index.php/s/DoQgkoeZRQDX9sY/download
+$ git clone https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-RELEASE-NEW.git
+$ cd ~/PAAS-TA-PORTAL-RELEASE-NEW
+$ wget -O src.zip http://45.248.73.44/index.php/s/Mty2YMwtde4YwKN/download
 $ unzip src.zip
 ```
