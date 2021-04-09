@@ -13,9 +13,8 @@ src <br>
 │     └── mariadb-10.5.9-linux-x86_64.tar.gz <br>
 ├── java <br>
 │     └── jre-8u77-linux-x64.tar.gz <br>
-├── web-ide-broker <br>
-│     └── web-ide-broker.jar <br>
-└── README.md <br>
+└── web-ide-broker <br>
+      └── web-ide-broker.jar <br>
 
 
 ```
