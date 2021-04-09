@@ -41,7 +41,9 @@ do
   export PATH=${package_bin_dir}:$PATH
 done
 
-export PATH=$PATH:$PKG_DIR/java/bin:$PKG_DIR/docker:$PKG_DIR/eclipse-che/bin
+
+export PATH=$PATH:$PKG_DIR/docker:$PKG_DIR/eclipse-che/bin
+
 
 # Add all packages /lib into $LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:-''} # default to empty
@@ -49,13 +51,6 @@ for package_bin_dir in $(ls -d /var/vcap/packages/*/lib)
 do
   export LD_LIBRARY_PATH=${package_bin_dir}:$LD_LIBRARY_PATH
 done
-
-# Setup Java home and add it into $PATH
-if [[ -d $PKG_DIR/java ]]
-then
-  export JAVA_HOME="/var/vcap/packages/java"
-  export PATH=$PATH:${JAVA_HOME}/bin
-fi
 
 # setup CLASSPATH for all jars/ folders within packages
 export CLASSPATH=${CLASSPATH:-''} # default to empty

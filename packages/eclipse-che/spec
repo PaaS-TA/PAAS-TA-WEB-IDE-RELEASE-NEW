@@ -4,3 +4,4 @@ dependencies:
 - java
 files:
 - eclipse-che/eclipse-che.tar.gz
+- eclipse-che/authz-broker.tar

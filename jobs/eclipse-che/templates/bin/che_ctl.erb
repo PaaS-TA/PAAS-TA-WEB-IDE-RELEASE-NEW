@@ -27,10 +27,26 @@ start)
   echo "starting 5 :: LOG_DIR :: $LOG_DIR"
   echo "starting 5 :: PIDFILE :: $PIDFILE"
 
-  exec docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/vcap/data/workspace:/data -e CHE_DOCKER_IP_EXTERNAL=$(cat /var/vcap/bosh/spec.json | awk -F " " '{split($1, array, "vip"); split(array[2], array2, "ip"); split(array2[2], array3, "\""); print array3[3] }') eclipse/che:6.0.0 start --offline \
+
+<% if p("cce_enable") %>
+
+sudo usermod -aG docker vcap
+sudo chmod 666 /var/run/docker.sock
+sudo service docker restart
+
+  exec docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/vcap/data/workspace:/data -e CHE_DOCKER_IP_EXTERNAL=$(cat /var/vcap/bosh/spec.json | awk -F " " '{split($1, array, "vip"); split(array[2], array2, "ip"); split(array2[2], array3, "\""); print array3[3] }') eclipse/che:6.0.0 start --offline --security-opt=no-new-privlieges \
   >>$LOG_DIR/$JOB_NAME.stdout.log \
   2>>$LOG_DIR/$JOB_NAME.stderr.log &
 
+<% end %>
+
+<% if p("cce_enable") == false %>
+
+  exec docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/vcap/data/workspace:/data -e CHE_DOCKER_IP_EXTERNAL=$(cat /var/vcap/bosh/spec.json | awk -F " " '{split($1, array, "vip"); split(array[2], array2, "ip"); split(array2[2], array3, "\""); print array3[3] }') eclipse/che:6.0.0 start --offline \
+   >>$LOG_DIR/$JOB_NAME.stdout.log \
+   2>>$LOG_DIR/$JOB_NAME.stderr.log &
+
+<% end %>
 
   pid_process=$(docker inspect -f '{{ .State.Pid }}' che)
 
