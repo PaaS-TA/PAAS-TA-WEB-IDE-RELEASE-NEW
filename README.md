@@ -10,7 +10,7 @@ src <br>
 ├── eclipse-che <br>
 │     └── eclipse-che.tar.gz <br>
 ├── mariadb <br>
-│     └── mariadb-10.1.22-linux-x86_64.tar.gz <br>
+│     └── mariadb-10.5.9-linux-x86_64.tar.gz <br>
 ├── java <br>
 │     └── jre-8u77-linux-x64.tar.gz <br>
 ├── web-ide-broker <br>
@@ -18,12 +18,10 @@ src <br>
 └── README.md <br>
 
 
-***현재 BOSH 특정버전 이상에서 지원 안됨 ***
-
 ```
 $ cd ~/
 $ git clone https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-RELEASE-NEW.git
 $ cd ~/PAAS-TA-PORTAL-RELEASE-NEW
-$ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/r62Z3gAazaXZSaj/download
+$ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/5rz3mCze4bDSPBk/download
 $ unzip src.zip
 ```
