@@ -1,4 +1,4 @@
-<% if p("cce_enable") == "false" %>
+<% if p("cce_enable") == false %>
     UPDATE mysql.user SET password=PASSWORD('<%= p("mariadb.admin_user.password") %>') WHERE user='root';
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '<%= p("mariadb.admin_user.password") %>' WITH GRANT OPTION;
 <% end %>
