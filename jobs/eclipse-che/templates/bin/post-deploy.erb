@@ -1,5 +1,8 @@
 #!/bin/bash
 
+<% if p("cce_enable") %>
+
+
 chown root /var/vcap/data/workspace/instance/data/postgres
 
 echo "-w /usr/bin/docker -p rwxa -k docker
@@ -19,3 +22,5 @@ echo "
 export DOCKER_CONTENT_TRUST=1" | sudo tee -a /etc/bash.bashrc
 
 exec bash
+
+<% end %>
