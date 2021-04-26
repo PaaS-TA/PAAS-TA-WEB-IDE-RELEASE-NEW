@@ -16,7 +16,6 @@ src <br>
 └── web-ide-broker <br>
       └── web-ide-broker.jar <br>
 
-
 ```
 $ cd ~/
 $ git clone https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-RELEASE-NEW.git
