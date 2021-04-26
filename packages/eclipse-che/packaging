@@ -2,7 +2,8 @@
 set -e
 
 archive="eclipse-che/eclipse-che.tar.gz"
-
 tar -xvf $archive
+
+mv eclipse-che/authz-broker.tar ./ 
 
 cp *.tar ${BOSH_INSTALL_TARGET}/.

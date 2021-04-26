@@ -1,5 +1,12 @@
-    UPDATE mysql.user SET password=PASSWORD('<%= p("mariadb.admin_user.password") %>') WHERE user='root';
+set password=password('<%= p("mariadb.admin_user.password") %>');
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '<%= p("mariadb.admin_user.password") %>' WITH GRANT OPTION;
+
+<% if p("cce_enable") %>
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED VIA ed25519 USING PASSWORD('<%= p("mariadb.admin_user.password") %>') WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED VIA ed25519 USING PASSWORD('<%= p("mariadb.admin_user.password") %>') WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'vcap'@'localhost' IDENTIFIED VIA ed25519 USING PASSWORD('<%= p("mariadb.admin_user.password") %>') WITH GRANT OPTION;
+<% end %>
+
 FLUSH PRIVILEGES;
 
 
@@ -56,4 +63,7 @@ CREATE TABLE `on_demand_info`  (
   PRIMARY KEY (`service_instance_id`) USING BTREE
 ) ENGINE = MyISAM CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
+<% if p("cce_enable") %>
 SET FOREIGN_KEY_CHECKS = 1;
+<% end %>
+

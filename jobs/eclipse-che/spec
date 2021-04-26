@@ -5,17 +5,21 @@ templates:
   bin/che_ctl.erb: bin/che_ctl
   bin/monit_debugger: bin/monit_debugger
   bin/install.sh.erb: bin/pre-start
+  bin/post-deploy.erb : bin/post-deploy
   helpers/install_deb.sh.erb: helpers/install_deb.sh
   helpers/ctl_setup.sh: helpers/ctl_setup.sh
   helpers/ctl_utils.sh: helpers/ctl_utils.sh
   data/properties.sh: data/properties.sh
+  data/policy.json: data/policy.json
 
 provides:
   - {name: eclipse-che-link, type: eclipse-che}
 
 packages:
-  - java
   - docker
   - eclipse-che
 
-
+properties:
+  cce_enable:
+    description: CCE config
+    default: false

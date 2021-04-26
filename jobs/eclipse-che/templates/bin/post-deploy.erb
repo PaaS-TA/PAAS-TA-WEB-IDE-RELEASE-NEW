@@ -1,0 +1,26 @@
+#!/bin/bash
+
+<% if p("cce_enable") %>
+
+
+chown root /var/vcap/data/workspace/instance/data/postgres
+
+echo "-w /usr/bin/docker -p rwxa -k docker
+-w /var/lib/docker -p rwxa -k docker
+-w /etc/docker -p rwxa -k docker
+-w /lib/systemd/system/docker.service -p rwxa -k docker
+-w /lib/systemd/system/docker.socket -p rwxa -k docker
+-w /etc/default/docker -p rwxa -k docker" | sudo tee -a /etc/audit/rules.d/audit.rules
+
+
+sudo systemctl restart auditd.service
+
+
+
+
+echo "
+export DOCKER_CONTENT_TRUST=1" | sudo tee -a /etc/bash.bashrc
+
+exec bash
+
+<% end %>

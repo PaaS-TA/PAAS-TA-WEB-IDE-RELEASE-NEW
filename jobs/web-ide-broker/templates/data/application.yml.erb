@@ -5,8 +5,8 @@ spring:
   application:
     name: paasta-web-ide
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: "jdbc:mysql://<%= link('mariadb-link').instances[0].address%>:<%= link('mariadb-link').p('mariadb.port')%>/webide?autoReconnect=true&useUnicode=true&characterEncoding=utf8"
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: "jdbc:mariadb://<%= link('mariadb-link').instances[0].address%>:<%= link('mariadb-link').p('mariadb.port')%>/webide?autoReconnect=true&useUnicode=true&characterEncoding=utf8"
     username: root
     password: <%= p('datasource.password')%>
   jpa:

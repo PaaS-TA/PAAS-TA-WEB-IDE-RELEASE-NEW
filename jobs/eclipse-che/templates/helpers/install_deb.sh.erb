@@ -10,7 +10,32 @@ sudo dpkg -i *
 sudo service docker stop
 sudo cp -r /var/lib/docker /var/vcap/data
 
-sudo find /lib/systemd/system -name "docker.service" -type f | sudo xargs sed -i -e 's/ExecStart=\/usr\/bin\/dockerd -H fd:\/\/ --containerd=\/run\/containerd\/containerd.sock/ExecStart=\/usr\/bin\/dockerd -H fd:\/\/ --containerd=\/run\/containerd\/containerd.sock --data-root=\/var\/vcap\/data\/docker/g'
 
+<% if p("cce_enable") %>
+
+sudo usermod -aG docker vcap
+sudo chmod 666 /var/run/docker.sock
+<% end %>
+
+
+sudo find /lib/systemd/system -name "docker.service" -type f | sudo xargs sed -i -e 's/ExecStart=\/usr\/bin\/dockerd -H fd:\/\/ --containerd=\/run\/containerd\/containerd.sock/ExecStart=\/usr\/bin\/dockerd -H fd:\/\/ --containerd=\/run\/containerd\/containerd.sock --data-root=\/var\/vcap\/data\/docker/g'
 sudo systemctl daemon-reload
 sudo service docker start
+
+
+<% if p("cce_enable") %>
+
+chmod 777 /var/vcap/jobs/eclipse-che/data/policy.json
+mkdir /var/lib/authz-broker
+cp /var/vcap/jobs/eclipse-che/data/policy.json /var/lib/authz-broker
+
+docker load < /var/vcap/packages/eclipse-che/authz-broker.tar
+
+docker run -d  --restart=always -v /var/lib/authz-broker/policy.json:/var/lib/authz-broker/policy.json -v /run/docker/plugins/:/run/docker/plugins --security-opt=no-new-privileges twistlock/authz-broker
+
+sudo find /lib/systemd/system -name "docker.service" -type f | sudo xargs sed -i -e 's/ExecStart=\/usr\/bin\/dockerd -H fd:\/\/ --containerd=\/run\/containerd\/containerd.sock --data-root=\/var\/vcap\/data\/docker/ExecStart=\/usr\/bin\/dockerd --selinux-enabled=true -H fd:\/\/ --containerd=\/run\/containerd\/containerd.sock --data-root=\/var\/vcap\/data\/docker --authorization-plugin=authz-broker/g'
+
+sudo systemctl daemon-reload
+sudo service docker restart
+
+<% end %>
