@@ -1,6 +1,6 @@
 set -e
 
-archive="docker/docker.tar.gz"
+archive="docker/docker-ubuntu-bionic-20.10.7.tar.gz"
 
 
 tar -xvf $archive
