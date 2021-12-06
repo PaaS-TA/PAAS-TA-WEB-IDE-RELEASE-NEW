@@ -77,7 +77,7 @@ src 폴더에 각 package의 설치파일이 위치해야 한다.
 
 src <br>
 ├── docker <br>
-│     └── docker-ubuntu-bionic-20.10.7.tar.gz <br>
+│     └── docker-ubuntu-bionic-20.10.9.tar.gz <br>
 ├── eclipse-che <br>
 │     └── eclipse-che.tar.gz <br>
 ├── mariadb <br>
