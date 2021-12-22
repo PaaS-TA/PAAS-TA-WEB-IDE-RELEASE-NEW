@@ -77,7 +77,7 @@ src 폴더에 각 package의 설치파일이 위치해야 한다.
 
 src <br>
 ├── docker <br>
-│     └── docker.tar.gz <br>
+│     └── docker-ubuntu-bionic-20.10.9.tar.gz <br>
 ├── eclipse-che <br>
 │     └── eclipse-che.tar.gz <br>
 ├── mariadb <br>
@@ -91,7 +91,7 @@ src <br>
 $ cd ~/
 $ git clone https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-RELEASE-NEW.git
 $ cd ~/PAAS-TA-PORTAL-RELEASE-NEW
-$ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/5rz3mCze4bDSPBk/download
+$ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/BEEdH2grAQKboQs/download
 $ unzip src.zip
 ```
 
