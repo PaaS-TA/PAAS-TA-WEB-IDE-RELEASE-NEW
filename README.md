@@ -91,7 +91,7 @@ src <br>
 $ cd ~/
 $ git clone https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-RELEASE-NEW.git
 $ cd ~/PAAS-TA-PORTAL-RELEASE-NEW
-$ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/BEEdH2grAQKboQs/download
+$ wget -O src.zip https://nextcloud.paas-ta.org/index.php/s/T248E58EeG3X5x5/download
 $ unzip src.zip
 ```
 
