@@ -5,6 +5,10 @@
 /out/
 !gradle/wrapper/gradle-wrapper.jar
 src/test/resources/*.yml
+.dev_builds/
+dev_releases/
+**/*.zip
+**/*.jar
 
 ### STS ###
 .apt_generated
@@ -30,4 +34,4 @@ nbdist/
 src/main/webapp/
 
 #BOSH
-src/*
+#src/*
