@@ -90,7 +90,7 @@ src <br>
 ```
 $ cd ~/
 $ git clone https://github.com/PaaS-TA/PAAS-TA-WEB-IDE-RELEASE-NEW.git
-$ cd ~/PAAS-TA-PORTAL-RELEASE-NEW
+$ cd ~/PAAS-TA-WEB-IDE-RELEASE-NEW
 $ wget -O src.zip  https://nextcloud.paas-ta.org/index.php/s/DK9MNTBswyBmE8M/download
 $ unzip src.zip
 ```
